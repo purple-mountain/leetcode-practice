@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <map>
 #include <string>
 #include <unordered_map>
@@ -11,12 +12,12 @@ class Solution
   public:
     vector<vector<string>> groupAnagrams(vector<string> &strs)
     {
-        map<vector<int>, vector<string>> map;
+        map<array<int, 26>, vector<string>> map;
         vector<vector<string>> ans;
 
         for (string str : strs)
         {
-            vector<int> count(26, 0);
+            array<int, 26> count;
 
             for (char ch : str)
             {
