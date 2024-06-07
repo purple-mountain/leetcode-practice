@@ -13,21 +13,25 @@ class Solution
   public:
     bool isPalindrome(string s)
     {
-        string tmp;
-
-        for (auto ch : s)
+        for (int i = 0, j = s.size() - 1; j >= i;)
         {
-            if (is_valid(ch))
+            if (!is_valid(s[i]))
             {
-                tmp += tolower(ch);
+                i++;
             }
-        }
-
-        for (int i = 0; i < (tmp.size() + 1) / 2; i++)
-        {
-            if (tmp[i] != tmp[tmp.size() - 1 - i])
+            else if (!is_valid(s[j]))
             {
-                return false;
+                j--;
+            }
+            else
+            {
+                if (tolower(s[i]) != tolower(s[j]))
+                {
+                    return false;
+                }
+
+                i++;
+                j--;
             }
         }
 
